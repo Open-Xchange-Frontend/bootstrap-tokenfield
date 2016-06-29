@@ -259,13 +259,6 @@
             $closeButton
                 .on('click', $.proxy(this.remove, this));
 
-            // Trigger createdtoken event on the original field
-            // indicating that the token is now in the DOM
-            this.$element.trigger($.Event('tokenfield:createdtoken', {
-                attrs: attrs,
-                relatedTarget: $token.get(0)
-            }));
-
             // Trigger change event on the original field
             if (triggerChange) {
                 this.$element.val(this.getTokensList()).trigger($.Event('change', { initiator: 'tokenfield' }));
@@ -279,6 +272,13 @@
 
                 $tokenLabel.css('max-width', _self.maxTokenWidth);
                 _self.update();
+
+                // Trigger createdtoken event on the original field
+                // indicating that the token is now in the DOM
+                this.$element.trigger($.Event('tokenfield:createdtoken', {
+                    attrs: attrs,
+                    relatedTarget: $token.get(0)
+                }));
             }, 0);
 
             // Return original element
