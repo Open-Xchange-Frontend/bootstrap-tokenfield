@@ -275,7 +275,7 @@
 
                 // Trigger createdtoken event on the original field
                 // indicating that the token is now in the DOM
-                this.$element.trigger($.Event('tokenfield:createdtoken', {
+                _self.$element.trigger($.Event('tokenfield:createdtoken', {
                     attrs: attrs,
                     relatedTarget: $token.get(0)
                 }));
