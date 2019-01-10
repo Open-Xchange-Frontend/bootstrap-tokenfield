@@ -117,6 +117,7 @@
         this.$element
             .data('original-styles', originalStyles)
             .data('original-tabindex', this.$element.prop('tabindex'))
+            .attr('aria-hidden', true)
             .css('position', 'absolute')
             .css(hidingPosition, '-10000px')
             .prop('tabindex', -1);
@@ -143,7 +144,7 @@
         }
 
         // Set up a copy helper to handle copy & paste
-        this.$copyHelper = $('<input type="text" />').css('position', 'absolute').css(hidingPosition, '-10000px').prop('tabindex', -1).prependTo(this.$wrapper);
+        this.$copyHelper = $('<input type="text" tabindex="-1" aria-hidden="true">').css('position', 'absolute').css(hidingPosition, '-10000px').prependTo(this.$wrapper);
 
         // Set wrapper width
         if (elStyleWidth) {
