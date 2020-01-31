@@ -275,6 +275,7 @@
             $token
                 .on('mousedown', function (e) {
                     if (_self._disabled || _self._readonly) return false;
+                    if (e.metaKey || e.ctrlKey || e.shiftKey) _self.preventFocus = true;
                     _self.preventDeactivation = true;
                 })
                 .on('click', function (e) {
@@ -629,7 +630,7 @@
             this.focused = true;
             this.$wrapper.addClass('focus');
 
-            if ($(document.activeElement).hasClass('token')) {
+            if ($(document.activeElement).hasClass('token') && !this.preventFocus) {
                 $(document.activeElement).addClass('active').attr({ tabindex: 0, 'aria-selected': true });
             }
 
@@ -641,6 +642,8 @@
                     this.search();
                 }
             }
+
+            this.preventFocus = false;
         },
 
         blur: function (e) {
