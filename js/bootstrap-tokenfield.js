@@ -15,8 +15,9 @@
         // (such as Node.js), expose a Tokenfield-making factory as module.exports
         // This accentuates the need for the creation of a real window or passing in a jQuery instance
         // e.g. require("bootstrap-tokenfield")(window); or require("bootstrap-tokenfield")($);
-        module.exports = global.window && global.window.$ ?
-            factory(global.window.$) :
+        var globalDefined = (window && (window.$ || window.jQuery)) || (global.window && (global.window.$ || global.window.jQuery))
+        module.exports = globalDefined ?
+            factory(globalDefined) :
             function (input) {
                 if (!input.$ && !input.fn) {
                     throw new Error('Tokenfield requires a window object with jQuery or a jQuery instance');
