@@ -2,7 +2,7 @@
   "name": "@open-xchange/bootstrap-tokenfield",
   "title": "Bootstrap Tokenfield",
   "description": "Advanced tagging/tokenizing plugin for input fields with a focus on keyboard and copy-paste support. Fork of sliptree/bootstrap-tokenfield",
-  "version": "0.13.2",
+  "version": "0.13.3",
   "main": "dist/bootstrap-tokenfield.js",
   "homepage": "https://github.com/Open-Xchange-Frontend/bootstrap-tokenfield",
   "author": "Open-Xchange <ui-team@open-xchange.com>",
