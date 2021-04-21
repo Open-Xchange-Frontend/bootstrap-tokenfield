@@ -15,7 +15,7 @@
         // (such as Node.js), expose a Tokenfield-making factory as module.exports
         // This accentuates the need for the creation of a real window or passing in a jQuery instance
         // e.g. require("bootstrap-tokenfield")(window); or require("bootstrap-tokenfield")($);
-        var globalDefined = (window && (window.$ || window.jQuery)) || (global.window && (global.window.$ || global.window.jQuery))
+        var globalDefined = (window && (window.$ || window.jQuery)) || (global.window && (global.window.$ || global.window.jQuery));
         module.exports = globalDefined ?
             factory(globalDefined) :
             function (input) {
@@ -180,7 +180,7 @@
         this.update();
 
         // Create initial tokens, if any
-        this.setTokens(this.options.tokens, false, ! this.$element.val() && this.options.tokens);
+        this.setTokens(this.options.tokens, false, !this.$element.val() && this.options.tokens);
 
         // Start listening to events
         this.listen();
@@ -248,9 +248,9 @@
             if (!createEvent.attrs || createEvent.isDefaultPrevented()) return;
 
             var $token = $('<div class="token" tabindex="-1" aria-selected="false" />')
-                  .append('<span class="token-label" />')
-                  .append('<a href="#" class="close" tabindex="-1" aria-label="Remove">&times;</a>')
-                  .data('attrs', attrs);
+                .append('<span class="token-label" />')
+                .append('<a href="#" class="close" tabindex="-1" aria-label="Remove">&times;</a>')
+                .data('attrs', attrs);
 
             // Insert token into HTML
             if (this.$input.hasClass('tt-input')) {
@@ -894,9 +894,9 @@
             e.stopPropagation();
         },
 
-      /**
-       * Update tokenfield dimensions
-       */
+        /**
+         * Update tokenfield dimensions
+         */
         update: function (e) {
             var value = this.$input.val(),
                 inputPaddingLeft = parseInt(this.$input.css('padding-left'), 10),
@@ -923,8 +923,8 @@
                 this.$input.width(this.options.minWidth);
 
                 var w = (this.textDirection === 'rtl')
-                      ? this.$input.offset().left + this.$input.outerWidth() - this.$wrapper.offset().left - parseInt(this.$wrapper.css('padding-left'), 10) - inputPadding - 1
-                      : this.$wrapper.offset().left + this.$wrapper.width() + parseInt(this.$wrapper.css('padding-left'), 10) - this.$input.offset().left - inputPadding;
+                    ? this.$input.offset().left + this.$input.outerWidth() - this.$wrapper.offset().left - parseInt(this.$wrapper.css('padding-left'), 10) - inputPadding - 1
+                    : this.$wrapper.offset().left + this.$wrapper.width() + parseInt(this.$wrapper.css('padding-left'), 10) - this.$input.offset().left - inputPadding;
                 //
                 // some usecases pre-render widget before attaching to DOM,
                 // dimensions returned by jquery will be NaN -> we default to 100%
@@ -972,7 +972,7 @@
             this['_' + property] = value;
             this.$input.prop(property, value);
             this.$element.prop(property, value);
-            this.$wrapper[ value ? 'addClass' : 'removeClass' ](property);
+            this.$wrapper[value ? 'addClass' : 'removeClass'](property);
         },
 
         destroy: function () {
@@ -995,8 +995,8 @@
 
             // Remove tokenfield-related data
             this.$element.removeData('original-styles')
-                         .removeData('original-tabindex')
-                         .removeData('bs.tokenfield');
+                .removeData('original-tabindex')
+                .removeData('bs.tokenfield');
 
             // Remove tokenfield from DOM
             this.$wrapper.remove();
